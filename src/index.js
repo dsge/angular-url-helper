@@ -4,4 +4,4 @@ angular.module(module.exports = 'angular-url-helper',[
 
 ])
 .run(require('./run/UrlHelper'))
-.service('UrlHelper', require('./service/UrlHelper'))
+.provider('UrlHelper', require('./provider/UrlHelper'))
