@@ -1,4 +1,5 @@
 module.exports = /*@ngInject*/ function () {
+    "ngInject";
     'use strict';
     var base = null,
         provider = this;
