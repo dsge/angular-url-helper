@@ -1,7 +1,5 @@
-module.exports = /*@ngInject*/ function($rootScope, UrlHelper) {
-    "ngInject";
-
+module.exports = ['$rootScope', 'UrlHelper', function($rootScope, UrlHelper) {
     $rootScope.asset = UrlHelper.asset;
 
     $rootScope.url = $rootScope.asset;
-};
+}];

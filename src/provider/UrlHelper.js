@@ -1,4 +1,4 @@
-module.exports = /*@ngInject*/ function () {
+module.exports = [function () {
     "ngInject";
     'use strict';
     var base = null,
@@ -38,4 +38,4 @@ module.exports = /*@ngInject*/ function () {
 
         return UrlHelper;
     }];
-};
+}];
