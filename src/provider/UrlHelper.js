@@ -2,7 +2,8 @@ module.exports = [function () {
     "ngInject";
     'use strict';
     var base = null,
-        provider = this;
+        provider = this,
+        apiBase = null;
 
     this.getBase = function () {
         return base;
@@ -12,10 +13,21 @@ module.exports = [function () {
         base = b;
     };
 
+    this.getApiBase = function () {
+        return apiBase;
+    };
+
+    this.setApiBase = function (b) {
+        apiBase = b;
+    };
+
     this.$get = ['$window', '$browser', function ($window, $browser) {
 
         var calculateBase = function () {
             return $window.BASE_HREF || $browser.baseHref() || '/';
+        };
+        var calculateApiBase = function () {
+            return $window.API_BASE || calculateBase();
         };
 
 
@@ -27,6 +39,16 @@ module.exports = [function () {
                 var b = provider.getBase();
                 if (!b) {
                     b = calculateBase();
+                }
+                return b + path.replace(/^\//, '');
+            },
+            api: function (path) {
+                if (!path) {
+                    throw new Error("$rootScope.asset needs a valid relative path");
+                }
+                var b = provider.getApiBase();
+                if (!b) {
+                    b = calculateApiBase();
                 }
                 return b + path.replace(/^\//, '');
             }
